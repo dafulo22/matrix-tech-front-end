@@ -1,0 +1,135 @@
+<ul class="alert alert-danger" *ngIf="errores?.length > 0">
+  <li *ngFor="let err of errores">
+    {{ err }}
+  </li>
+</ul>
+<div class="card text-white">
+  <div class="card-header text-dark">{{ titulo }}</div>
+  <div class="card-body">
+
+    <form #clienteForm="ngForm">
+      <div class="form-group row">
+        <label for="name" class="text-dark col-form-label col-sm-2">Nombre</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="cliente.name" name="nombre" #nombre="ngModel">
+          <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+            <div *ngIf="nombre.errors.required">
+              Nombre es requerido
+            </div>
+            <div *ngIf="nombre.errors.minlength">
+              Nombre debe tener al menos 4 caracteres
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="lastName" class="text-dark col-form-label col-sm-2">Apellido</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="cliente.lastName" name="apellido" #apellido="ngModel"> <!-- required -->
+          <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+            <div *ngIf="apellido.errors.required">
+              Apellido es requerido
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--<div class="form-group row">
+        <label for="identificationType" class="text-dark col-form-label col-sm-2">Tipo Documento</label>
+        <div class="col-sm-6">
+          <select class="custom-select form-control" id="identificationType" required [(ngModel)]="cliente.identificationType" #identificationType="ngModel">
+            <option selected disabled value="">Escoja una opción</option>
+            <option value="CC">Cédula</option>
+            <option value="TI">Tarjeta de Identidad</option>
+            <option value="PAS">Pasaporte</option>
+            <option value="CE">Cédula de Extranjería</option>
+          </select>
+        </div>
+      </div>-->
+
+      <div class="form-group row">
+        <label for="document" class="text-dark col-form-label col-sm-2">Documento</label>
+        <div class="col-sm-6">
+          <input disabled type="text" class="form-control" [(ngModel)]="cliente.document" name="document" #document="ngModel">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="birthDate" class="text-dark col-form-label col-sm-2">Fecha de nacimiento</label>
+        <div class="col-sm-6">
+          <input type="date" class="form-control" [(ngModel)]="cliente.birthDate" name="birthDate" #birthDate="ngModel">
+        </div>
+      </div>
+
+      <!--<div class="form-group row">
+        <label for="gender" class="text-dark col-form-label col-sm-2">Género</label>
+        <div class="col-sm-6">
+          <select id="gender" class="custom-select form-control" required [(ngModel)]="cliente.gender" #gender="ngModel">
+            <option selected disabled value="">Escoja una opción</option>
+            <option value="M">Masculino</option>
+            <option value="F">Femenino</option>
+          </select>
+        </div>
+      </div>-->
+
+      <div class="form-group row">
+        <label for="email" class="text-dark col-form-label col-sm-2">Email</label>
+        <div class="col-sm-6">
+          <input type="email" class="form-control" [(ngModel)]="cliente.email" name="email" #email="ngModel"> <!-- required email -->
+          <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+            <div *ngIf="email.errors.required">
+              Email es requerido
+            </div>
+            <div *ngIf="email.errors.email">
+              Email debe tener un formato válido
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="cellPhone" class="text-dark col-form-label col-sm-2">Celular</label>
+        <div class="col-sm-6">
+          <input type="tel" class="form-control" [(ngModel)]="cliente.cellPhone" name="cellPhone" #cellPhone="ngModel"> <!-- required email -->
+          <div class="alert alert-danger" *ngIf="cellPhone.invalid && (cellPhone.dirty || cellPhone.touched)">
+            <div *ngIf="cellPhone.errors.required">
+              Celular es requerido
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="phone" class="text-dark col-form-label col-sm-2">Telefono</label>
+        <div class="col-sm-6">
+          <input type="tel" class="form-control" [(ngModel)]="cliente.phone" name="phone" #phone="ngModel"> <!-- required email -->
+          <div class="alert alert-danger" *ngIf="phone.invalid && (phone.dirty || phone.touched)">
+            <div *ngIf="phone.errors.required">
+              Celular es requerido
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="address" class="text-dark col-form-label col-sm-2">Dirección</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="cliente.address" name="address" #address="ngModel">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-sm-8">
+	<button class="btn btn-primary" role="button" (click)='create()' *ngIf="!cliente.id else elseBlock" [disabled]="!clienteForm.form.valid">Crear</button>
+
+          <ng-template #elseBlock>
+            <button class="float-right btn btn-primary" role="button" (click)='update()' [disabled]="!clienteForm.form.valid">Editar</button>
+          </ng-template>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>

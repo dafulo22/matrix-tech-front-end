@@ -1,0 +1,29 @@
+<div class="card border-primary mb-5" *ngIf="mostrar else elseBlock">
+  <div class="card-header">Protagonistas</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title my-2 ">Listado de protagonistas</h5>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hero of heroes">
+          <td>{{ hero.code }}</td>
+          <td>{{ hero.name }}</td>
+          <td>{{ hero.description }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div>
+    {{ mensaje }}
+  </div>
+</ng-template>
