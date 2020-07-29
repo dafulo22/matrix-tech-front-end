@@ -9,13 +9,15 @@ import { ClienteService } from './clientes/cliente.service';
 import { DirectorService } from './director/director.service';
 import { ProducerService } from './producer/producer.service';
 import { HeroService } from './hero/hero.service';
+import { RentalService } from './rental/rental.service';
 import { RouterModule, Routes} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
 import { DirectorComponent } from './director/director.component';
 import { ProducerComponent } from './producer/producer.component';
-import { HeroComponent } from './hero/hero.component'
+import { HeroComponent } from './hero/hero.component';
+import { RentalComponent } from './rental/rental.component'
 
 const routes: Routes = [
   {path: '', redirectTo: '/clientes', pathMatch: 'full'},
@@ -37,7 +39,8 @@ const routes: Routes = [
     FormComponent,
     DirectorComponent,
     ProducerComponent,
-    HeroComponent
+    HeroComponent,
+    RentalComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ const routes: Routes = [
     ClienteService,
     DirectorService,
     ProducerService,
-    HeroService
+    HeroService,
+    RentalService
   ],
   bootstrap: [AppComponent]
 })
