@@ -12,7 +12,8 @@ export class FormComponent implements OnInit {
 
   private cliente: Cliente = new Cliente();
   private titulo:string = "Crear Cliente";
-
+  private isEdit: boolean = false;
+  private options: string[] = ["CC", "TI", "PAS", "CE"];
   errores: string[];
 
   constructor(private clienteService: ClienteService,
@@ -28,6 +29,7 @@ export class FormComponent implements OnInit {
       let id = params['id']
       if(id){
         this.titulo = "Editar Cliente";
+        this.isEdit = true;
         this.clienteService.getCliente(id).subscribe( (cliente) => this.cliente = cliente)
       }
     })
@@ -51,7 +53,7 @@ export class FormComponent implements OnInit {
     .subscribe(
     json => {
       this.router.navigate(['/clientes']);
-          swal('Cliente Actualizado', `${json.mensaje}: ${json.cliente.name}`, 'success');
+          swal('Cliente Actualizado', 'Con Exito', 'success');
     } ,
     err => {
       this.errores = err.error.errors as string[];
