@@ -32,7 +32,7 @@ export class ClientesComponent implements OnInit {
 
   delete(cliente: Cliente): void {
     swal({
-      title: 'Está seguro?',
+      title: '¿Está seguro?',
       text: `¿Seguro que desea eliminar al cliente ${cliente.name} ${cliente.lastName}?`,
       type: 'warning',
       showCancelButton: true,
@@ -41,7 +41,7 @@ export class ClientesComponent implements OnInit {
       confirmButtonText: 'Si, eliminar!',
       cancelButtonText: 'No, cancelar!',
       confirmButtonClass: 'btn btn-success',
-      cancelButtonClass: 'btn btn-danger',
+      cancelButtonClass: 'btn btn-danger mr-2',
       buttonsStyling: false,
       reverseButtons: true
     }).then((result) => {

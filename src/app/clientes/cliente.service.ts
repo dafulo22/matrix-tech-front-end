@@ -30,6 +30,7 @@ export class ClienteService {
         let clientes = response as Cliente[];
         return clientes.map(cliente => {
           cliente.name = cliente.name.toUpperCase();
+          cliente.lastName = cliente.lastName.toUpperCase();
           //let datePipe = new DatePipe('es');
           //cliente.createAt = datePipe.transform(cliente.createAt, 'EEEE dd, MMMM yyyy');
           //cliente.createAt = formatDate(cliente.createAt, 'dd-MM-yyyy', 'es');
